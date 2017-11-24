@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tic Tac Toe</title>
+	<link rel="stylesheet" href="https://unpkg.com/papercss@1.1.0/dist/paper.min.css">
+	<link rel="stylesheet" href="tictac.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-2 col"></div>
+			<div class="col-8 col">
+				<div class="game_wrapper border border-primary">
+					<div class="game_overlay border border-primary">
+						<div class="game_overlay_inner">
+							<div class="game_overlay_text"></div>
+							<button class="game_overlay_reset btn-block" onclick="window.location.reload()">Restart</button>
+						</div>
+					</div>
+					<div class="game_status">
+						<h3>Tic Tac Toe!</h3>
+					</div>
+					<div class="game_board">
+						<div class="game_board_item border border-4 border-primary"></div>
+						<div class="game_board_item border border-2 border-primary"></div>
+						<div class="game_board_item border border-4 border-primary"></div>
+						<div class="game_board_item border border-5 border-primary"></div>
+						<div class="game_board_item border border-3 border-primary"></div>
+						<div class="game_board_item border border-2 border-primary"></div>
+						<div class="game_board_item border border-4 border-primary"></div>
+						<div class="game_board_item border border-5 border-primary"></div>
+						<div class="game_board_item border border-2 border-primary"></div>
+					</div>
+					<div class="game_status">
+						<h3 class="game_status_name">X</h3>
+					</div>
+				</div>				
+			</div>
+			<div class="col-2 col"></div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="tictac.js"></script>
+</body>
+</html>

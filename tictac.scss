@@ -1,0 +1,78 @@
+body {
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100vh;
+}
+
+.game {
+	&_wrapper {
+		// width: 500px;
+		// min-height: 600px;
+		// display: block;
+		// margin: 0 auto;
+		position: relative;
+		// padding: 20px;
+	}
+	&_overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: transparentize(#DEA, 0.2);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		z-index: -1;
+
+		&_inner {
+			display: block;
+		}
+		&_text {
+			color: #FFFFFF;
+			font-size: 64px;
+			margin-bottom: 10px;
+		}
+	}
+	&_board {
+		width: 100%;
+		height: 500px;
+		margin-bottom: 10px;
+		padding: 10px 0;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+
+		&_item {
+			width: 150px;
+			height: 150px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 64px;
+		}
+		&_option {
+			cursor: pointer;
+			font-size: 64px;
+			padding: 10px;
+			margin: 5px;
+			opacity: 0.2;
+		}
+	}
+	&_status {
+		padding: 0 10px;;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&_name {
+			line-height: 0;
+		}
+	}
+	&_button {
+		padding: 20px 10px;
+	}
+}
