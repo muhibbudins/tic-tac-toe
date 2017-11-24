@@ -1,19 +1,22 @@
 body {
-  overflow: hidden;
   padding: 0;
   margin: 0;
   width: 100%;
-  height: 100vh; }
+  height: 100vh;
+  background-color: #ffffff;
+  background-image: url("https://www.transparenttextures.com/patterns/paper-3.png"); }
 
 .game_wrapper {
-  position: relative; }
+  position: relative;
+  background-color: #DEA;
+  background-image: url("https://www.transparenttextures.com/patterns/paper-3.png"); }
 .game_overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(221, 238, 170, 0.8);
+  background-color: rgba(221, 238, 170, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,25 +30,21 @@ body {
     margin-bottom: 10px; }
 .game_board {
   width: 100%;
-  height: 500px;
+  min-height: 400px;
   margin-bottom: 10px;
-  padding: 10px 0;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around; }
   .game_board_item {
     width: 150px;
-    height: 150px;
+    height: 140px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 64px; }
-  .game_board_option {
-    cursor: pointer;
     font-size: 64px;
-    padding: 10px;
-    margin: 5px;
-    opacity: 0.2; }
+    background-color: #FFFFFF;
+    margin-bottom: 20px; }
 .game_status {
   padding: 0 10px;
   display: flex;
@@ -53,7 +52,5 @@ body {
   justify-content: center; }
   .game_status_name {
     line-height: 0; }
-.game_button {
-  padding: 20px 10px; }
 
 /*# sourceMappingURL=tictac.css.map */

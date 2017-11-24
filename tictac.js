@@ -1,95 +1,86 @@
 let
-	_el = document.getElementsByClassName('game_board_item'),
-	_pl = document.getElementsByClassName('game_status_name'),
-	_ov = document.getElementsByClassName('game_overlay')[0],
-	_sc = document.getElementsByClassName('game_overlay_text')[0],
-	_ct = false,
-	_st = 0,
-	_ie = false,
-	_us = [{
-		name: 'Player 2',
+	block   = document.getElementsByClassName('game_board_item'),
+	player  = document.getElementsByClassName('game_status_name'),
+	overlay = document.getElementsByClassName('game_overlay')[0],
+	status  = document.getElementsByClassName('game_overlay_text')[0],
+	current = false,
+	state   = 0,
+	isEnd   = false,
+	moving  = 0,
+	flag    = [
+		{ 0: '', 1: '', 2: '' },
+		{ 0: '', 3: '', 6: '' },
+		{ 6: '', 7: '', 8: '' },
+		{ 2: '', 5: '', 8: '' },
+		{ 1: '', 4: '', 7: '' },
+		{ 3: '', 4: '', 5: '' },
+		{ 0: '', 4: '', 8: '' },
+		{ 2: '', 4: '', 6: '' }
+	],
+	user    = [{
+		name: 'Player 1',
 		move: 5,
 		score: 0
 	}, {
-		name: 'Player 1',
+		name: 'Player 2',
 		move: 4,
 		score: 0
-	}],
-	_fl = [{
-		0: '',
-		1: '',
-		2: ''
-	},{
-		0: '',
-		3: '',
-		6: ''
-	},{
-		6: '',
-		7: '',
-		8: ''
-	},{
-		2: '',
-		5: '',
-		8: ''
-	},{
-		1: '',
-		4: '',
-		7: ''
-	},{
-		3: '',
-		4: '',
-		5: ''
-	},{
-		0: '',
-		4: '',
-		8: ''
-	},{
-		2: '',
-		4: '',
-		6: ''
 	}];
 
-Object.keys(_el).forEach((item) => {
-  _el[item].addEventListener('click', (e) => {
-	_ct  = !_ct;
-
-  	let _ths = e.target,
-  		_opt = _ct ? 'O' : 'X';
-
-	if (_ie) {
+/**
+ * [description]
+ * @param  {[type]} block).forEach((item) [description]
+ * @return {[type]}                       [description]
+ */
+Object.keys(block).forEach((item) => {
+  block[item].addEventListener('click', (e) => {
+	if (isEnd || e.target.dataset.value) {
 		return false;
 	}
 
-  	if (_ths.dataset.value) {
-  		return false
-  	}
+	current = !current;
+	moving  = moving + 1;
 
-	_ths.innerHTML = _opt;
-	_ths.dataset.value = _opt;
+  	let element = e.target,
+  		option  = current ? 'X' : 'O';
+
+	element.innerHTML = option;
+	element.dataset.value = option;
   	
-	_pl[0].innerHTML = _us[_st].name + ' ' + _opt;
-	_us[_st].move = _us[_st].move - 1;
+	// player[0].innerHTML = user[state].name + ' ' + option;
+	user[state].move = user[state].move - 1;
 
-  	_st = _ct ? 0 : 1;
+  	state = current ? 0 : 1;
 
-    set(item, _opt);
-	// Console current user
-	// console.log(_us[_st])
+    set(item, option);
+
   }, false);
-})
+});
 
+/**
+ * [description]
+ * @param  {[type]}   index [description]
+ * @param  {[type]}   data  [description]
+ * @param  {Function} cb    [description]
+ * @return {[type]}         [description]
+ */
 set = (index, data, cb) => {
-	_fl.forEach((obj, key) => {
+	flag.forEach((obj, key) => {
 		Object.keys(obj).forEach((item) => {
-			if (typeof _fl[key][index] !== 'undefined') {
-				_fl[key][index] = data;
+			if (typeof flag[key][index] !== 'undefined') {
+				flag[key][index] = data;
 			}
-		})
-	})
-	// console.log(index, data)
-	check(_fl)
+		});
+	});
+
+	check(flag);
 }
 
+/**
+ * [description]
+ * @param  {[type]} data [description]
+ * @return {[type]}      [description]
+ */
 check = (data) => {
 	let bracket = [];
 	data.forEach((value, index) => {
@@ -100,16 +91,17 @@ check = (data) => {
 	})
 	// console.log(bracket)
 	if (bracket.indexOf('XXX') > -1 || bracket.indexOf('OOO') > -1) {
-		_ie = true;
-		_ov.style.opacity = 1;
-		_ov.style.zIndex = 100;
-		_sc.innerHTML = _us[_st].name + ' Win!';
-	}
+		isEnd = true;
 
-	if (_us[0].move == 0) {
-		_ie = true;
-		_ov.style.opacity = 1;
-		_ov.style.zIndex = 100;
-		_sc.innerHTML = 'No More Move!';
+		overlay.style.opacity = 1;
+		overlay.style.zIndex  = 100;
+		status.innerHTML      = user[state].name + ' Win!';
+	} else {
+		if (moving === 9) {
+			isEnd = true;
+			overlay.style.opacity = 1;
+			overlay.style.zIndex = 100;
+			status.innerHTML = 'No More Move!';
+		}
 	}
 }
