@@ -9,7 +9,8 @@ body {
 .game_wrapper {
   position: relative;
   background-color: #DEA;
-  background-image: url("https://www.transparenttextures.com/patterns/paper-3.png"); }
+  background-image: url("https://www.transparenttextures.com/patterns/paper-3.png");
+  padding: 0 10px; }
 .game_overlay {
   position: absolute;
   top: 0;
@@ -37,8 +38,8 @@ body {
   flex-wrap: wrap;
   justify-content: space-around; }
   .game_board_item {
-    width: 150px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
