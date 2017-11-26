@@ -51,6 +51,11 @@ body {
 			color: #FFFFFF;
 			font-size: 64px;
 			margin-bottom: 10px;
+
+			@media (max-width: 768px) {
+				font-size: 48px;
+				text-align: center;
+			}
 		}
 	}
 	&_player {
@@ -103,6 +108,12 @@ body {
 		flex-wrap: wrap;
 		justify-content: space-around;
 
+		@media (max-width: 480px) {
+			min-height: 300px;
+		}
+		@media (max-width: 768px) {
+			min-height: 290px;
+		}
 		&_item {
 			width: 120px;
 			height: 120px;
@@ -114,6 +125,15 @@ body {
 			background-image: url("https://www.transparenttextures.com/patterns/paper-3.png");
 			margin-bottom: 20px;
 			border-color: darken(#DEA, 30%);
+
+			@media (max-width: 480px) {
+				width: 85px;
+				height: 85px;
+			}
+			@media (max-width: 768px) {
+				width: 80px;
+				height: 85px;
+			}
 		}
 	}
 	&_status {

@@ -45,6 +45,10 @@ body {
     color: #FFFFFF;
     font-size: 64px;
     margin-bottom: 10px; }
+    @media (max-width: 768px) {
+      .game_overlay_text {
+        font-size: 48px;
+        text-align: center; } }
 .game_player {
   width: 100%;
   display: inline-block;
@@ -86,6 +90,12 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around; }
+  @media (max-width: 480px) {
+    .game_board {
+      min-height: 300px; } }
+  @media (max-width: 768px) {
+    .game_board {
+      min-height: 290px; } }
   .game_board_item {
     width: 120px;
     height: 120px;
@@ -97,6 +107,14 @@ body {
     background-image: url("https://www.transparenttextures.com/patterns/paper-3.png");
     margin-bottom: 20px;
     border-color: #aad52b; }
+    @media (max-width: 480px) {
+      .game_board_item {
+        width: 85px;
+        height: 85px; } }
+    @media (max-width: 768px) {
+      .game_board_item {
+        width: 80px;
+        height: 85px; } }
 .game_status {
   padding: 0 10px;
   display: flex;
