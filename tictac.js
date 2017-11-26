@@ -43,7 +43,11 @@ let
  */
 Object.keys(block).forEach((item) => {
   block[item].addEventListener('click', (e) => {
-	if (isEnd && e.target.dataset.value !== '') {
+	if (isEnd) {
+		return false;
+	}
+
+	if (e.target.dataset.value && e.target.dataset.value !== '') {
 		return false;
 	}
 
