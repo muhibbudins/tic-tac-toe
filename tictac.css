@@ -9,6 +9,16 @@ body {
   align-items: center;
   justify-content: center; }
 
+.github {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: none; }
+  .github img {
+    border: none;
+    border-radius: 0;
+    width: 100px; }
+
 .game_wrapper {
   position: relative;
   background-color: #DEA;
