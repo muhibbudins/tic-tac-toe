@@ -1,15 +1,19 @@
-window.addEventListener("beforeunload", function (e) {
+/**
+ * Show warning when user reload page
+ * @return {[type]} [description]
+ */
+window.addEventListener("beforeunload", function(e) {
   var confirmationMessage = "Do you want to reset this game?";
 
   e.returnValue = confirmationMessage;     // Gecko, Trident, Chrome 34+
   return confirmationMessage;              // Gecko, WebKit, Chrome <34
 });
 
-let
+var
 	block   = document.getElementsByClassName('game_board_item'),
 	player  = document.getElementsByClassName('game_status_name'),
 	overlay = document.getElementsByClassName('game_overlay')[0],
-	status  = document.getElementsByClassName('game_overlay_text')[0],
+	overtxt = document.getElementsByClassName('game_overlay_text')[0],
 	reset   = document.getElementsByClassName('game_overlay_reset')[0],
 	score   = document.getElementsByClassName('game_player_score'),
 	current = false,
@@ -37,12 +41,12 @@ let
 	}];
 
 /**
- * [description]
+ * Initialize game
  * @param  {[type]} block).forEach((item) [description]
  * @return {[type]}                       [description]
  */
-Object.keys(block).forEach((item) => {
-  block[item].addEventListener('click', (e) => {
+Object.keys(block).forEach(function(item) {
+  block[item].addEventListener('click', function(e) {
 	if (isEnd) {
 		return false;
 	}
@@ -54,13 +58,12 @@ Object.keys(block).forEach((item) => {
 	current = !current;
 	moving  = moving + 1;
 
-  	let element = e.target,
+  	var element = e.target,
   		option  = current ? 'X' : 'O';
 
 	element.innerHTML = option;
 	element.dataset.value = option;
-  	
-	// player[0].innerHTML = user[state].name + ' ' + option;
+
 	user[state].move = user[state].move - 1;
 
   	state = current ? 0 : 1;
@@ -71,15 +74,15 @@ Object.keys(block).forEach((item) => {
 });
 
 /**
- * [description]
+ * Set current rule of game
  * @param  {[type]}   index [description]
  * @param  {[type]}   data  [description]
  * @param  {Function} cb    [description]
  * @return {[type]}         [description]
  */
-set = (index, data, cb) => {
-	flag.forEach((obj, key) => {
-		Object.keys(obj).forEach((item) => {
+function set(index, data, cb) {
+	flag.forEach(function(obj, key) {
+		Object.keys(obj).forEach(function(item) {
 			if (typeof flag[key][index] !== 'undefined') {
 				flag[key][index] = data;
 			}
@@ -90,15 +93,15 @@ set = (index, data, cb) => {
 }
 
 /**
- * [description]
+ * Checking rule of game to detect winner
  * @param  {[type]} data [description]
  * @return {[type]}      [description]
  */
-check = (data) => {
-	let bracket = [];
-	data.forEach((value, index) => {
+function check(data) {
+	var bracket = [];
+	data.forEach(function(value, index) {
 		bracket[index] = '';
-		Object.keys(value).forEach((idx) => {
+		Object.keys(value).forEach(function(idx) {
 			bracket[index] += value[idx];
 		})
 	})
@@ -108,7 +111,7 @@ check = (data) => {
 
 		overlay.style.opacity  = 1;
 		overlay.style.zIndex   = 100;
-		status.innerHTML       = user[state].name + ' Win!';
+		overtxt.innerHTML       = user[state].name + ' Win!';
 		user[state].score      = user[state].score + 1;
 		score[state].innerHTML = user[state].score;
 	} else {
@@ -116,19 +119,18 @@ check = (data) => {
 			isEnd = true;
 			overlay.style.opacity = 1;
 			overlay.style.zIndex = 100;
-			status.innerHTML = 'Draw!';
+			overtxt.innerHTML = 'Draw!';
 		}
 	}
 }
 
 /**
- * [description]
- * @param  {[type]} )     {	}         [description]
- * @param  {[type]} false [description]
- * @return {[type]}       [description]
+ * Reseting game
+ * @param  {[type]} [description]
+ * @return {[type]} [description]
  */
-reset.addEventListener('click', (e) => {
-	Object.keys(block).forEach((item) => {
+reset.addEventListener('click', function(e) {
+	Object.keys(block).forEach(function(item) {
 		user[0].move = 5;
 		user[1].move = 4;
 		current      = false;
