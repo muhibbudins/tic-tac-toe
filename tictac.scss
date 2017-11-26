@@ -2,9 +2,12 @@ body {
 	padding: 0;
 	margin: 0;
 	width: 100%;
-	height: 100vh;
+	min-height: 100vh;
 	background-color: #ffffff;
 	background-image: url("https://www.transparenttextures.com/patterns/paper-3.png");
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .game {
@@ -13,6 +16,7 @@ body {
 		background-color: #DEA;
 		background-image: url("https://www.transparenttextures.com/patterns/paper-3.png");
 		padding: 0 10px;
+		border-color: darken(#DEA, 40%);
 	}
 	&_overlay {
 		position: absolute;
@@ -26,6 +30,7 @@ body {
 		justify-content: center;
 		opacity: 0;
 		z-index: -1;
+		border-color: darken(#DEA, 40%);
 
 		&_inner {
 			display: block;
@@ -34,6 +39,47 @@ body {
 			color: #FFFFFF;
 			font-size: 64px;
 			margin-bottom: 10px;
+		}
+	}
+	&_player {
+		width: 100%;
+		display: inline-block;
+		border-bottom: 2px solid;
+		margin-bottom: 20px;
+		border-bottom-left-radius: 10px 2px;
+		border-bottom-right-radius: 150px 5px;
+		border-color: darken(#DEA, 40%);
+
+		&_one,
+		&_two {
+			width: 50%;
+			display: inline-block;
+			float: left;
+			padding: 20px;
+			text-align: center;
+			font-size: 24px;
+			position: relative;
+
+			&:before {
+				content: 'X';
+				position: absolute;
+				z-index: 1;
+				top: 50%;
+				left: 50%;
+				transform: translateY(-35%) translateX(-50%);
+				font-size: 100px;
+				opacity: 0.2;
+				color: darken(#DEA, 40%);
+			}
+		}
+		&_two:before {
+			content: 'O';
+		}
+		&_score {
+			font-size: 36px;
+			margin-top: 10px;
+			z-index: 10;
+			font-weight: bold;
 		}
 	}
 	&_board {
@@ -52,8 +98,10 @@ body {
 			align-items: center;
 			justify-content: center;
 			font-size: 64px;
-			background-color: #FFFFFF;
+			background-color: darken(#DEA, 10%);
+			background-image: url("https://www.transparenttextures.com/patterns/paper-3.png");
 			margin-bottom: 20px;
+			border-color: darken(#DEA, 30%);
 		}
 	}
 	&_status {

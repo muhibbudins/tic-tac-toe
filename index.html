@@ -16,11 +16,20 @@
 					<div class="game_overlay border border-primary">
 						<div class="game_overlay_inner">
 							<div class="game_overlay_text"></div>
-							<button class="game_overlay_reset btn-block" onclick="window.location.reload()">Restart</button>
+							<button class="game_overlay_reset btn-block">Restart</button>
 						</div>
 					</div>
 					<div class="game_status">
-						<h2>Tic Tac Toe!</h2>
+						<div class="game_player">
+							<div class="game_player_one">
+								<span>Player 1</span>
+								<div class="game_player_score">0</div>
+							</div>
+							<div class="game_player_two">
+								<span>Player 2</span>
+								<div class="game_player_score">0</div>
+							</div>
+						</div>
 					</div>
 					<div class="game_board">
 						<div class="game_board_item border border-4 border-primary"></div>
@@ -32,10 +41,6 @@
 						<div class="game_board_item border border-4 border-primary"></div>
 						<div class="game_board_item border border-5 border-primary"></div>
 						<div class="game_board_item border border-2 border-primary"></div>
-					</div>
-					<div class="game_status">
-						<h3 class="game_status_name">Player 1 (X)</h3>
-						<h3 class="game_status_name">Player 2 (O)</h3>
 					</div>
 				</div>				
 			</div>

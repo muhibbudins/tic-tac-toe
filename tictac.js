@@ -1,8 +1,17 @@
+window.addEventListener("beforeunload", function (e) {
+  var confirmationMessage = "Do you want to reset this game?";
+
+  e.returnValue = confirmationMessage;     // Gecko, Trident, Chrome 34+
+  return confirmationMessage;              // Gecko, WebKit, Chrome <34
+});
+
 let
 	block   = document.getElementsByClassName('game_board_item'),
 	player  = document.getElementsByClassName('game_status_name'),
 	overlay = document.getElementsByClassName('game_overlay')[0],
 	status  = document.getElementsByClassName('game_overlay_text')[0],
+	reset   = document.getElementsByClassName('game_overlay_reset')[0],
+	score   = document.getElementsByClassName('game_player_score'),
 	current = false,
 	state   = 0,
 	isEnd   = false,
@@ -34,7 +43,7 @@ let
  */
 Object.keys(block).forEach((item) => {
   block[item].addEventListener('click', (e) => {
-	if (isEnd || e.target.dataset.value) {
+	if (isEnd && e.target.dataset.value !== '') {
 		return false;
 	}
 
@@ -93,15 +102,48 @@ check = (data) => {
 	if (bracket.indexOf('XXX') > -1 || bracket.indexOf('OOO') > -1) {
 		isEnd = true;
 
-		overlay.style.opacity = 1;
-		overlay.style.zIndex  = 100;
-		status.innerHTML      = user[state].name + ' Win!';
+		overlay.style.opacity  = 1;
+		overlay.style.zIndex   = 100;
+		status.innerHTML       = user[state].name + ' Win!';
+		user[state].score      = user[state].score + 1;
+		score[state].innerHTML = user[state].score;
 	} else {
 		if (moving === 9) {
 			isEnd = true;
 			overlay.style.opacity = 1;
 			overlay.style.zIndex = 100;
-			status.innerHTML = 'No More Move!';
+			status.innerHTML = 'Draw!';
 		}
 	}
 }
+
+/**
+ * [description]
+ * @param  {[type]} )     {	}         [description]
+ * @param  {[type]} false [description]
+ * @return {[type]}       [description]
+ */
+reset.addEventListener('click', (e) => {
+	Object.keys(block).forEach((item) => {
+		user[0].move = 5;
+		user[1].move = 4;
+		current      = false;
+		state        = 0;
+		isEnd        = false;
+		moving       = 0;
+		flag         = [
+			{ 0: '', 1: '', 2: '' },
+			{ 0: '', 3: '', 6: '' },
+			{ 6: '', 7: '', 8: '' },
+			{ 2: '', 5: '', 8: '' },
+			{ 1: '', 4: '', 7: '' },
+			{ 3: '', 4: '', 5: '' },
+			{ 0: '', 4: '', 8: '' },
+			{ 2: '', 4: '', 6: '' }
+		];
+		block[item].innerHTML     = '';
+		block[item].dataset.value = '';
+		overlay.style.opacity     = 0;
+		overlay.style.zIndex      = -1;
+	});
+}, false);

@@ -2,15 +2,19 @@ body {
   padding: 0;
   margin: 0;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #ffffff;
-  background-image: url("https://www.transparenttextures.com/patterns/paper-3.png"); }
+  background-image: url("https://www.transparenttextures.com/patterns/paper-3.png");
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .game_wrapper {
   position: relative;
   background-color: #DEA;
   background-image: url("https://www.transparenttextures.com/patterns/paper-3.png");
-  padding: 0 10px; }
+  padding: 0 10px;
+  border-color: #88aa22; }
 .game_overlay {
   position: absolute;
   top: 0;
@@ -22,13 +26,47 @@ body {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  z-index: -1; }
+  z-index: -1;
+  border-color: #88aa22; }
   .game_overlay_inner {
     display: block; }
   .game_overlay_text {
     color: #FFFFFF;
     font-size: 64px;
     margin-bottom: 10px; }
+.game_player {
+  width: 100%;
+  display: inline-block;
+  border-bottom: 2px solid;
+  margin-bottom: 20px;
+  border-bottom-left-radius: 10px 2px;
+  border-bottom-right-radius: 150px 5px;
+  border-color: #88aa22; }
+  .game_player_one, .game_player_two {
+    width: 50%;
+    display: inline-block;
+    float: left;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    position: relative; }
+    .game_player_one:before, .game_player_two:before {
+      content: 'X';
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-35%) translateX(-50%);
+      font-size: 100px;
+      opacity: 0.2;
+      color: #88aa22; }
+  .game_player_two:before {
+    content: 'O'; }
+  .game_player_score {
+    font-size: 36px;
+    margin-top: 10px;
+    z-index: 10;
+    font-weight: bold; }
 .game_board {
   width: 100%;
   min-height: 400px;
@@ -44,8 +82,10 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 64px;
-    background-color: #FFFFFF;
-    margin-bottom: 20px; }
+    background-color: #cce680;
+    background-image: url("https://www.transparenttextures.com/patterns/paper-3.png");
+    margin-bottom: 20px;
+    border-color: #aad52b; }
 .game_status {
   padding: 0 10px;
   display: flex;
