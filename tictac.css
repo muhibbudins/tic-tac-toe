@@ -7,7 +7,8 @@ body {
   background-image: url("https://www.transparenttextures.com/patterns/paper-3.png");
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  user-select: none; }
 
 .github {
   position: fixed;
