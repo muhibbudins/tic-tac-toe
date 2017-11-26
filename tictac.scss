@@ -1,149 +1,149 @@
 body {
-	padding: 0;
-	margin: 0;
-	width: 100%;
-	min-height: 100vh;
-	background-color: #ffffff;
-	background-image: url("https://www.transparenttextures.com/patterns/paper-3.png");
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	user-select: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  background-image: url("https://www.transparenttextures.com/patterns/paper-3.png");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
 }
 .github {
-	position: fixed;
-	top: 0;
-	right: 0;
-	background: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: none;
 
-	img {
-	    border: none;
-	    border-radius: 0;
-	    width: 100px;
-	}
+  img {
+      border: none;
+      border-radius: 0;
+      width: 100px;
+  }
 }
 .game {
-	&_wrapper {
-		position: relative;
-		background-color: #DEA;
-		background-image: url("https://www.transparenttextures.com/patterns/paper-3.png");
-		padding: 0 10px;
-		border-color: darken(#DEA, 40%);
-	}
-	&_overlay {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background-color: transparentize(#DEA, 0.1);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		opacity: 0;
-		z-index: -1;
-		border-color: darken(#DEA, 40%);
+  &_wrapper {
+    position: relative;
+    background-color: #DEA;
+    background-image: url("https://www.transparenttextures.com/patterns/paper-3.png");
+    padding: 0 10px;
+    border-color: darken(#DEA, 40%);
+  }
+  &_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparentize(#DEA, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    z-index: -1;
+    border-color: darken(#DEA, 40%);
 
-		&_inner {
-			display: block;
-		}
-		&_text {
-			color: #FFFFFF;
-			font-size: 64px;
-			margin-bottom: 10px;
+    &_inner {
+      display: block;
+    }
+    &_text {
+      color: #FFFFFF;
+      font-size: 64px;
+      margin-bottom: 10px;
 
-			@media (max-width: 768px) {
-				font-size: 48px;
-				text-align: center;
-			}
-		}
-	}
-	&_player {
-		width: 100%;
-		display: inline-block;
-		border-bottom: 2px solid;
-		margin-bottom: 20px;
-		border-bottom-left-radius: 10px 2px;
-		border-bottom-right-radius: 150px 5px;
-		border-color: darken(#DEA, 40%);
+      @media (max-width: 768px) {
+        font-size: 48px;
+        text-align: center;
+      }
+    }
+  }
+  &_player {
+    width: 100%;
+    display: inline-block;
+    border-bottom: 2px solid;
+    margin-bottom: 20px;
+    border-bottom-left-radius: 10px 2px;
+    border-bottom-right-radius: 150px 5px;
+    border-color: darken(#DEA, 40%);
 
-		&_one,
-		&_two {
-			width: 50%;
-			display: inline-block;
-			float: left;
-			padding: 20px;
-			text-align: center;
-			font-size: 24px;
-			position: relative;
+    &_one,
+    &_two {
+      width: 50%;
+      display: inline-block;
+      float: left;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      position: relative;
 
-			&:before {
-				content: 'X';
-				position: absolute;
-				z-index: 1;
-				top: 50%;
-				left: 50%;
-				transform: translateY(-35%) translateX(-50%);
-				font-size: 100px;
-				opacity: 0.2;
-				color: darken(#DEA, 40%);
-			}
-		}
-		&_two:before {
-			content: 'O';
-		}
-		&_score {
-			font-size: 36px;
-			margin-top: 10px;
-			z-index: 10;
-			font-weight: bold;
-		}
-	}
-	&_board {
-		width: 100%;
-		min-height: 400px;
-		margin-bottom: 10px;
-		padding: 0;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-around;
+      &:before {
+        content: 'X';
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-35%) translateX(-50%);
+        font-size: 100px;
+        opacity: 0.2;
+        color: darken(#DEA, 40%);
+      }
+    }
+    &_two:before {
+      content: 'O';
+    }
+    &_score {
+      font-size: 36px;
+      margin-top: 10px;
+      z-index: 10;
+      font-weight: bold;
+    }
+  }
+  &_board {
+    width: 100%;
+    min-height: 400px;
+    margin-bottom: 10px;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 
-		@media (max-width: 480px) {
-			min-height: 300px;
-		}
-		@media (max-width: 768px) {
-			min-height: 290px;
-		}
-		&_item {
-			width: 120px;
-			height: 120px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-size: 64px;
-			background-color: darken(#DEA, 10%);
-			background-image: url("https://www.transparenttextures.com/patterns/paper-3.png");
-			margin-bottom: 20px;
-			border-color: darken(#DEA, 30%);
+    @media (max-width: 480px) {
+      min-height: 300px;
+    }
+    @media (max-width: 768px) {
+      min-height: 290px;
+    }
+    &_item {
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      background-color: darken(#DEA, 10%);
+      background-image: url("https://www.transparenttextures.com/patterns/paper-3.png");
+      margin-bottom: 20px;
+      border-color: darken(#DEA, 30%);
 
-			@media (max-width: 480px) {
-				width: 85px;
-				height: 85px;
-			}
-			@media (max-width: 768px) {
-				width: 80px;
-				height: 85px;
-			}
-		}
-	}
-	&_status {
-		padding: 0 10px;;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+      @media (max-width: 480px) {
+        width: 85px;
+        height: 85px;
+      }
+      @media (max-width: 768px) {
+        width: 80px;
+        height: 85px;
+      }
+    }
+  }
+  &_status {
+    padding: 0 10px;;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-		&_name {
-			line-height: 0;
-		}
-	}
+    &_name {
+      line-height: 0;
+    }
+  }
 }
